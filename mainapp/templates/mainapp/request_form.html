@@ -45,6 +45,59 @@
     </div>
   </div>
 
+  <div id="deniedinstructionModal" class="modal  fade" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" style="background: white">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">You have denied Location - നിങ്ങൾ സ്ഥലം നിരസിച്ചു </h3>
+      </div>
+      <div class="modal-body">
+      	<button class="btn btn-primary"  style="margin: 10px" type="button" data-toggle="collapse" data-target="#collapseDesktop" aria-expanded="false" aria-controls="collapseExample">
+    നിങ്ങൾ ഡെസ്ക്‌ടോപ്പിൽ ആണെങ്കിൽ - If you are in desktop 
+  </button>
+       <div class="collapse" id="collapseDesktop">
+  <div class="card card-body">
+   <p>Go to 'settings'</p>
+	<p>Click on 'Advanced' on the bottom</p>
+	<p>Click on 'Content Settings'.</p>
+	<p>Click on 'Location'</p>
+	<p>From 'Block' section delete "https://keralarescue.in:443"</p>
+	<p>Refresh the page</p>
+<hr>
+<p>'settings' എന്നതിലേക്ക് പോകുക</p>
+<p>'Advanced' എന്നതിൽ അമർത്തുക .</p>
+<p>'Content Settings' എന്നതിൽ അമർത്തുക .</p>
+<p>'Location' എന്നത് അമർത്തുക </p>
+<p>'Block' വിഭാഗത്തിൽ നിന്ന് "https://keralarescue.in:443"</p>
+<p>പേജ് വീണ്ടും തുറക്കുക </p>
+  </div>
+</div>
+  <button class="btn btn-primary" type="button" style="margin: 10px" data-toggle="collapse" data-target="#collapseMobile" aria-expanded="false" aria-controls="collapseExample">
+    നിങ്ങൾ മൊബൈലിൽ ആണെങ്കിൽ  - If you are in mobile 
+  </button>
+       <div class="collapse" id="collapseMobile">
+  <div class="card card-body">
+   <p>Go to 'Settings'</p>
+	<p>Click on 'Content Settings'.</p>
+	<p>Click on 'Location' (enable location services)</p>
+	<p>From 'Blocked' section click on "https://keralarescue.in:443"</p>
+	<p>Click on 'Clear and Reset' to reset all the settings</p>
+	<p>Refresh the page</p>
+<hr>
+<p>'Settings' എന്നതിലേക്ക് പോകുക</p>
+<p>'Content Settings' എന്നതിൽ അമർത്തുക .</p>
+<p>'Location' എന്നതിൽ അമർത്തുക  (ലൊക്കേഷൻ സേവനങ്ങൾ പ്രവർത്തനക്ഷമമാക്കുക)</p>
+<p>'Blocked' എന്ന വിഭാഗത്തിൽ നിന്നും "https://keralarescue.in:443"</p>
+<p>എല്ലാ ക്രമീകരണങ്ങളും പുനഃസജ്ജമാക്കുന്നതിന്  'Clear and Reset' എന്നതിൽ അമർത്തുക </p>
+<p>പേജ് വീണ്ടും തുറക്കുക </p>
+</div>
+</div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" data-dismiss="modal" id="modal_ok_button" aria-hidden="true">Ok</button>
+      </div>
+    </div>
+  </div>
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script type="text/javascript">
 	try {
@@ -126,6 +179,7 @@
           switch (result.state) {
             case 'prompt': $('#instructionModal').modal('show'); break;
             case 'granted': navigator.geolocation.getCurrentPosition(success, error, options); break;
+            case 'denied': $('#deniedinstructionModal').modal('show'); break;
           }
       })
     } catch (err) {
